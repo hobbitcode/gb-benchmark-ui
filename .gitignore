@@ -119,3 +119,6 @@ dist
 
 # Neutrino build directory
 build
+
+# Editor directories and files
+.idea

@@ -1,5 +1,12 @@
 import { hot } from 'react-hot-loader';
-import React, { useContext, createContext, useState } from "react";
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+
+import React, { useContext, createContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,8 +14,8 @@ import {
   Link,
   Redirect,
   useHistory,
-  useLocation
-} from "react-router-dom";
+  useLocation,
+} from 'react-router-dom';
 
 // This example has 3 pages: a public page, a protected
 // page, and a login screen. In order to see the protected
@@ -67,7 +74,7 @@ const fakeAuth = {
   signout(cb) {
     fakeAuth.isAuthenticated = false;
     setTimeout(cb, 100);
-  }
+  },
 };
 
 /** For more details on
@@ -157,11 +164,24 @@ function PrivateRoute({ children, ...rest }) {
 }
 
 function PublicPage() {
-  return <h3>Public</h3>;
+  return (
+      <Container maxWidth="sm">
+        <Card>
+          <CardContent>
+            <Typography color="textSecondary" gutterBottom>
+              Login
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Login</Button>
+          </CardActions>
+        </Card>
+      </Container>
+  );
 }
 
 function ProtectedPage() {
-  return <h3>Protected</h3>;
+    return <h3>Protected</h3>;
 }
 
 function LoginPage() {
